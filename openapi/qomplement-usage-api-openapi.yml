@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: StructDatafy API Keys Usage API
+  description: Document extraction, PDF filling, and Excel filling API
+  version: 1.0.0
+tags:
+- name: Usage
+paths:
+  /v1/usage:
+    get:
+      tags:
+      - Usage
+      summary: Get Usage
+      description: Get usage statistics for the current API key.
+      operationId: get_usage_v1_usage_get
+      parameters:
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          description: current_month, last_month, or YYYY-MM
+          default: current_month
+          title: Period
+        description: current_month, last_month, or YYYY-MM
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    UsageResponse:
+      properties:
+        period:
+          type: string
+          title: Period
+        requests:
+          type: integer
+          title: Requests
+        pages_processed:
+          type: integer
+          title: Pages Processed
+        ocr_tokens:
+          type: integer
+          title: Ocr Tokens
+        structuring_tokens:
+          type: integer
+          title: Structuring Tokens
+        pdfs_filled:
+          type: integer
+          title: Pdfs Filled
+        excels_filled:
+          type: integer
+          title: Excels Filled
+        daily_breakdown:
+          items:
+            $ref: '#/components/schemas/DailyUsage'
+          type: array
+          title: Daily Breakdown
+      type: object
+      required:
+      - period
+      - requests
+      - pages_processed
+      - ocr_tokens
+      - structuring_tokens
+      - pdfs_filled
+      - excels_filled
+      - daily_breakdown
+      title: UsageResponse
+    DailyUsage:
+      properties:
+        date:
+          type: string
+          title: Date
+        requests:
+          type: integer
+          title: Requests
+        pages:
+          type: integer
+          title: Pages
+      type: object
+      required:
+      - date
+      - requests
+      - pages
+      title: DailyUsage
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

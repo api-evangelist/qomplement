@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: StructDatafy API Keys Extract API
+  description: Document extraction, PDF filling, and Excel filling API
+  version: 1.0.0
+tags:
+- name: Extract
+paths:
+  /v1/extract:
+    post:
+      tags:
+      - Extract
+      summary: Extract Document
+      description: 'Extract structured data from document(s).
+
+
+        Returns a clean `fields` dict with extracted key-value data, plus any `tables` found.
+
+        Add `detail=true` for the full AI output (entities, summary, primary/secondary entities).
+
+        Add `chunk_size` to get overlapping text chunks from the raw OCR.
+
+
+        - Single file <=5 pages: synchronous (200)
+
+        - Multiple files or >5 pages: async job (202), poll via /v1/jobs/{id}'
+      operationId: extract_document_v1_extract_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_extract_document_v1_extract_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/models:
+    get:
+      tags:
+      - Extract
+      summary: List Models
+      description: List all available models.
+      operationId: list_models_v1_models_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /v1/formats:
+    get:
+      tags:
+      - Extract
+      summary: List Formats
+      description: List all supported file formats grouped by category.
+      operationId: list_formats_v1_formats_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Body_extract_document_v1_extract_post:
+      properties:
+        files:
+          items:
+            type: string
+            format: binary
+          type: array
+          title: Files
+          description: Document file(s) to extract
+        model:
+          type: string
+          title: Model
+          description: 'OCR model: qomplement-OCR-v1 (standard) or qomplement-OCR-XL-v1 (high precision)'
+          default: qomplement-OCR-v1
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Schema
+          description: JSON schema of target fields
+        output_format:
+          type: string
+          title: Output Format
+          description: 'Output format: json, csv, xml'
+          default: json
+        detail:
+          type: boolean
+          title: Detail
+          description: Include full AI extraction detail (entities, summary, primary/secondary entities)
+          default: false
+        chunk_size:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Chunk Size
+          description: Split OCR text into chunks of this many characters
+        chunk_overlap:
+          type: integer
+          title: Chunk Overlap
+          description: Number of overlapping characters between chunks
+          default: 0
+        webhook_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Webhook Url
+          description: Webhook URL for async results
+      type: object
+      required:
+      - files
+      title: Body_extract_document_v1_extract_post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

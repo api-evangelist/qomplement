@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: StructDatafy API Keys Fill Excel API
+  description: Document extraction, PDF filling, and Excel filling API
+  version: 1.0.0
+tags:
+- name: Fill Excel
+paths:
+  /v1/fill/excel:
+    post:
+      tags:
+      - Fill Excel
+      summary: Fill Excel
+      description: 'Fill an Excel template using source documents, natural language instructions, or both.
+
+
+        Two ways to fill:
+
+        1. **Source documents** — upload source doc(s), AI extracts and maps data
+
+        2. **Instructions** — describe what to fill in plain language
+
+
+        Both can be combined. At least one must be provided.'
+      operationId: fill_excel_v1_fill_excel_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_fill_excel_v1_fill_excel_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Body_fill_excel_v1_fill_excel_post:
+      properties:
+        target_excel:
+          type: string
+          format: binary
+          title: Target Excel
+          description: Target Excel template to fill
+        source_files:
+          anyOf:
+          - items:
+              type: string
+              format: binary
+            type: array
+          - type: 'null'
+          title: Source Files
+          description: Source document(s) to extract data from
+        model:
+          type: string
+          title: Model
+          description: 'OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1'
+          default: qomplement-OCR-v1
+        instructions:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Instructions
+          description: Natural language instructions for filling
+        fill_mode:
+          type: string
+          title: Fill Mode
+          description: 'Fill mode: smart, complete, or replace'
+          default: smart
+        webhook_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Webhook Url
+      type: object
+      required:
+      - target_excel
+      title: Body_fill_excel_v1_fill_excel_post
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

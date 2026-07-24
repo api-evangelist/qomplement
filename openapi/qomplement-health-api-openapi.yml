@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info:
+  title: StructDatafy API Keys Health API
+  description: Document extraction, PDF filling, and Excel filling API
+  version: 1.0.0
+tags:
+- name: Health
+paths:
+  /v1/health:
+    get:
+      tags:
+      - Health
+      summary: Health Check
+      operationId: health_check_v1_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /health:
+    get:
+      summary: Root Health
+      operationId: root_health_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Health

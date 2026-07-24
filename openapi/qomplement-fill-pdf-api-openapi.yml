@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: StructDatafy API Keys Fill PDF API
+  description: Document extraction, PDF filling, and Excel filling API
+  version: 1.0.0
+tags:
+- name: Fill PDF
+paths:
+  /v1/fill/pdf:
+    post:
+      tags:
+      - Fill PDF
+      summary: Fill Pdf
+      description: 'Fill a PDF form using source documents, natural language instructions, or explicit mappings.
+
+
+        Three ways to fill:
+
+        1. **Source documents** — upload source doc(s), AI extracts and maps data to form fields
+
+        2. **Instructions** — describe what to fill in plain language
+
+        3. **Explicit mappings** — provide JSON {field_name: value} pairs
+
+
+        At least one of source_files, instructions, or field_mappings must be provided.'
+      operationId: fill_pdf_v1_fill_pdf_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_fill_pdf_v1_fill_pdf_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Body_fill_pdf_v1_fill_pdf_post:
+      properties:
+        target_pdf:
+          type: string
+          format: binary
+          title: Target Pdf
+          description: Target PDF form to fill
+        source_files:
+          anyOf:
+          - items:
+              type: string
+              format: binary
+            type: array
+          - type: 'null'
+          title: Source Files
+          description: Source document(s) to extract data from
+        model:
+          type: string
+          title: Model
+          description: 'OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1'
+          default: qomplement-OCR-v1
+        instructions:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Instructions
+          description: Natural language instructions for filling (e.g. "Fill client name as 'Acme Corp'")
+        field_mappings:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field Mappings
+          description: 'JSON explicit mappings {field: value}'
+        flatten:
+          type: boolean
+          title: Flatten
+          description: Flatten form after filling
+          default: false
+        webhook_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Webhook Url
+      type: object
+      required:
+      - target_pdf
+      title: Body_fill_pdf_v1_fill_pdf_post
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

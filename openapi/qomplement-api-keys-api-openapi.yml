@@ -1,0 +1,235 @@
+openapi: 3.1.0
+info:
+  title: StructDatafy API Keys API
+  description: Document extraction, PDF filling, and Excel filling API
+  version: 1.0.0
+tags:
+- name: API Keys
+paths:
+  /v1/keys:
+    get:
+      tags:
+      - API Keys
+      summary: List Api Keys
+      description: List all API keys.
+      operationId: list_api_keys_v1_keys_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/APIKeyResponse'
+                type: array
+                title: Response List Api Keys V1 Keys Get
+    post:
+      tags:
+      - API Keys
+      summary: Create Api Key
+      description: Create a new API key. The full key is shown only once.
+      operationId: create_api_key_v1_keys_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyCreated'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/keys/{key_id}:
+    delete:
+      tags:
+      - API Keys
+      summary: Revoke Api Key
+      description: Revoke an API key.
+      operationId: revoke_api_key_v1_keys__key_id__delete
+      parameters:
+      - name: key_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Key Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    APIKeyResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        key_prefix:
+          type: string
+          title: Key Prefix
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        owner_email:
+          type: string
+          title: Owner Email
+        is_active:
+          type: boolean
+          title: Is Active
+        rate_limit_per_minute:
+          type: integer
+          title: Rate Limit Per Minute
+        monthly_request_limit:
+          type: integer
+          title: Monthly Request Limit
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        last_used_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Used At
+      type: object
+      required:
+      - id
+      - key_prefix
+      - name
+      - owner_email
+      - is_active
+      - rate_limit_per_minute
+      - monthly_request_limit
+      - created_at
+      - last_used_at
+      title: APIKeyResponse
+    APIKeyCreated:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        key_prefix:
+          type: string
+          title: Key Prefix
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        owner_email:
+          type: string
+          title: Owner Email
+        is_active:
+          type: boolean
+          title: Is Active
+        rate_limit_per_minute:
+          type: integer
+          title: Rate Limit Per Minute
+        monthly_request_limit:
+          type: integer
+          title: Monthly Request Limit
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        last_used_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Used At
+        key:
+          type: string
+          title: Key
+      type: object
+      required:
+      - id
+      - key_prefix
+      - name
+      - owner_email
+      - is_active
+      - rate_limit_per_minute
+      - monthly_request_limit
+      - created_at
+      - last_used_at
+      - key
+      title: APIKeyCreated
+      description: Returned only on creation — includes the full key (shown once).
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    APIKeyCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: Friendly name for the key
+        owner_email:
+          type: string
+          title: Owner Email
+          description: Email of the key owner
+        rate_limit_per_minute:
+          type: integer
+          maximum: 1000.0
+          minimum: 1.0
+          title: Rate Limit Per Minute
+          default: 60
+        monthly_request_limit:
+          type: integer
+          minimum: 1.0
+          title: Monthly Request Limit
+          default: 10000
+      type: object
+      required:
+      - name
+      - owner_email
+      title: APIKeyCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
