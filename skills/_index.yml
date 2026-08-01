@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/qomplement-openapi-original.json
+skills:
+- file: qomplement-extract-document.md
+  name: Extract structured data from a document
+  api: openapi/qomplement-openapi-original.json
+  operations: [extract_document_v1_extract_post, get_job_v1_jobs__job_id__get, download_job_result_v1_jobs__job_id__download_get]
+- file: qomplement-fill-form.md
+  name: Fill a PDF form or Excel template
+  api: openapi/qomplement-openapi-original.json
+  operations: [fill_pdf_v1_fill_pdf_post, fill_excel_v1_fill_excel_post, get_job_v1_jobs__job_id__get, download_job_result_v1_jobs__job_id__download_get]

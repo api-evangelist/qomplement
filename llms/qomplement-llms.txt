@@ -1,0 +1,30 @@
+# Qomplement
+
+> Qomplement (Y Combinator, Spring 2026) builds an AI-native platform for supply chain and document-heavy operations. Its published developer product is the Qomplement StructDatafy API — extract structured data from documents in 30+ formats, fill PDF forms, and populate Excel templates programmatically. Job-based async processing with polling and webhooks, Bearer API-key auth, and first-party Python and Node.js SDKs.
+
+## APIs
+- [Qomplement StructDatafy API](https://docs.qomplement.com): document extraction, PDF fill, Excel fill. Base URL https://developer-api.qomplement.com/v1
+
+## Specs
+- [OpenAPI 3.1.0](https://developer-api.qomplement.com/openapi.json): 13 operations across extract, fill/pdf, fill/excel, jobs, models, formats, usage, keys
+
+## Docs
+- [API Overview](https://docs.qomplement.com/api/overview)
+- [Quickstart](https://docs.qomplement.com/api/quickstart)
+- [Authentication](https://docs.qomplement.com/api/authentication): Bearer sd_ API key from https://developers.qomplement.com
+- [Webhooks](https://docs.qomplement.com/api/webhooks)
+- [Rate Limiting](https://docs.qomplement.com/api/rate-limiting): 60/min, 10000/month
+- [Errors](https://docs.qomplement.com/api/errors)
+- [Python SDK](https://docs.qomplement.com/api/sdk-python): pip install qomplement
+- [Node SDK](https://docs.qomplement.com/api/sdk-node): npm install qomplement
+
+## SDKs
+- [Python (PyPI)](https://pypi.org/project/qomplement/)
+- [Node.js (npm)](https://www.npmjs.com/package/qomplement)
+- [GitHub org](https://github.com/Qomplement)
+
+## Company
+- [Website](https://qomplement.com)
+- [Blog](https://qomplement.com/blog)
+- [Terms of Service](https://qomplement.com/legal-pages/terms-of-service)
+- [Privacy Policy](https://qomplement.com/legal-pages/privacy-policy)

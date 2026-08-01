@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qomplement.com/api/rate-limiting
+scope: per-api-key
+limits:
+- window: minute
+  limit_count: 60
+  algorithm: sliding-window
+  note: Sliding window, resets continuously. Default 60 requests/minute per key.
+- window: month
+  limit_count: 10000
+  algorithm: calendar-month
+  note: Calendar month, resets on the 1st. Default 10,000 requests/month per key.
+exceeded:
+  status: 429
+  headers:
+    Retry-After: 'seconds to wait before retrying (e.g. Retry-After: 12)'
+  body: '{"detail": "Rate limit exceeded. 60 requests per minute allowed."}'
+headers_note: >-
+  Only Retry-After is documented on 429 responses; standard X-RateLimit-Limit /
+  X-RateLimit-Remaining headers are not documented.
+configurable:
+  note: rate_limit_per_minute and monthly_request_limit are configurable per API key.

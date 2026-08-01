@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qomplement.com/api/overview
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.qomplement.com/api/overview
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation policy or Sunset/Deprecation header support is documented.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  note: No public status page was found (health endpoints GET /health and GET /v1/health exist in the spec but are not a hosted status page).
+deprecated_operations: []

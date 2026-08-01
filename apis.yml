@@ -1,7 +1,28 @@
 aid: qomplement
 name: Qomplement
-description: Qomplement is a company surfaced as a portfolio company of y-combinator and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Qomplement is a San Francisco-based Y Combinator (Spring 2026) company building
+  an AI-native platform for supply chain and document-heavy back-office operations.
+  Its publicly documented developer product is the Qomplement StructDatafy API, a
+  REST API that extracts structured data from documents in 30+ formats, fills PDF
+  forms, and populates Excel templates programmatically using AI OCR and structuring
+  models. The API is asynchronous (job-based), authenticated with Bearer API keys
+  issued from the developer portal, rate limited per minute and per month, and ships
+  first-party Python and Node.js SDKs. This profile captures the published API surface,
+  SDKs, authentication, conventions, error model, webhooks, and lifecycle.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://qomplement.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/qomplement/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +32,239 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Document Extraction
+- OCR
+- Structured Data
+- Artificial Intelligence
+- Forms Automation
+- PDF
+- Supply Chain
+- Developer API
+- Y Combinator
+apis:
+- aid: qomplement:qomplement-api-keys-api
+  name: Qomplement API Keys API
+  description: The API Keys API from Qomplement — 2 operation(s) for api keys.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+- aid: qomplement:qomplement-extract-api
+  name: Qomplement Extract API
+  description: The Extract API from Qomplement — 3 operation(s) for extract.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - Extract
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-extract-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+- aid: qomplement:qomplement-fill-excel-api
+  name: Qomplement Fill Excel API
+  description: The Fill Excel API from Qomplement — 1 operation(s) for fill excel.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - Fill Excel
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-fill-excel-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+- aid: qomplement:qomplement-fill-pdf-api
+  name: Qomplement Fill PDF API
+  description: The Fill PDF API from Qomplement — 1 operation(s) for fill pdf.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - Fill PDF
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-fill-pdf-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+- aid: qomplement:qomplement-health-api
+  name: Qomplement Health API
+  description: The Health API from Qomplement — 2 operation(s) for health.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-health-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+- aid: qomplement:qomplement-jobs-api
+  name: Qomplement Jobs API
+  description: The Jobs API from Qomplement — 3 operation(s) for jobs.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+- aid: qomplement:qomplement-usage-api
+  name: Qomplement Usage API
+  description: The Usage API from Qomplement — 1 operation(s) for usage.
+  humanURL: https://docs.qomplement.com
+  baseURL: https://developer-api.qomplement.com/v1
+  tags:
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/qomplement-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qomplement.com
+  - type: APIReference
+    url: https://docs.qomplement.com/api/overview
+  - type: GettingStarted
+    url: https://docs.qomplement.com/api/quickstart
+  - type: Authentication
+    url: authentication/qomplement-authentication.yml
+  - type: Webhooks
+    url: asyncapi/qomplement-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/qomplement-rate-limits.yml
+common:
+- type: DeveloperPortal
+  url: https://developers.qomplement.com
+- type: Documentation
+  url: https://docs.qomplement.com
+- type: APIReference
+  url: https://docs.qomplement.com/api/overview
+- type: GettingStarted
+  url: https://docs.qomplement.com/api/quickstart
+- type: Authentication
+  url: authentication/qomplement-authentication.yml
+- type: OpenAPI
+  url: openapi/qomplement-openapi-original.json
+- type: Packages
+  url: packages/qomplement-packages.yml
+- type: SDKs
+  url: packages/qomplement-packages.yml
+- type: MCPServer
+  url: mcp/qomplement-mcp.yml
+- type: LLMsTxt
+  url: llms/qomplement-llms.txt
+- type: Overlay
+  url: overlays/qomplement-overlay.yaml
+- type: Conformance
+  url: conformance/qomplement-conformance.yml
+- type: ErrorCatalog
+  url: errors/qomplement-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/qomplement-lifecycle.yml
+- type: Conventions
+  url: conventions/qomplement-conventions.yml
+- type: DataModel
+  url: data-model/qomplement-data-model.yml
+- type: WellKnown
+  url: well-known/qomplement-well-known.yml
+- type: DomainSecurity
+  url: security/qomplement-domain-security.yml
+- type: AsyncAPI
+  url: asyncapi/qomplement-webhooks.yml
+- type: Webhooks
+  url: asyncapi/qomplement-webhooks.yml
+- type: RateLimits
+  url: rate-limits/qomplement-rate-limits.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: GitHubOrganization
+  url: https://github.com/Qomplement
+- type: Blog
+  url: https://qomplement.com/blog
+- type: SignUp
+  url: https://developers.qomplement.com
+- type: Login
+  url: https://kirbi.ai/auth
+- type: TermsOfService
+  url: https://qomplement.com/legal-pages/terms-of-service
+- type: PrivacyPolicy
+  url: https://qomplement.com/legal-pages/privacy-policy
+- type: Support
+  url: https://docs.qomplement.com
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1

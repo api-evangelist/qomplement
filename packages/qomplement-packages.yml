@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qomplement.com/api/sdk-python
+packages:
+- language: python
+  registry: pypi
+  name: qomplement
+  version: 0.1.0
+  url: https://pypi.org/project/qomplement/
+  install: pip install qomplement
+  repository: https://github.com/Qomplement/qomplement-python
+  summary: Python SDK for the Qomplement StructDatafy API — extract structured data from documents and fill forms with AI.
+  requires: Python 3.8+
+  official: true
+- language: javascript
+  registry: npm
+  name: qomplement
+  version: 0.1.0
+  url: https://www.npmjs.com/package/qomplement
+  install: npm install qomplement
+  repository: https://github.com/Qomplement/qomplement-node
+  summary: Node.js SDK for the Qomplement StructDatafy API — extract structured data from documents and fill forms with AI.
+  requires: Node.js 18+ (TypeScript types included)
+  official: true

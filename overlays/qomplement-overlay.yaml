@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Qomplement StructDatafy API
+  version: 1.0.0
+extends: openapi/qomplement-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: qomplement
+    x-apievangelist-authentication: Bearer API key (sd_ prefix); see authentication/qomplement-authentication.yml
+    x-apievangelist-webhooks: extract, fill_pdf, fill_excel job-completion callbacks
+    x-apievangelist-rate-limits: 60/min, 10000/month per key
+- target: $.servers
+  update:
+  - url: https://developer-api.qomplement.com/v1
+    description: Production (documented base URL; original spec omits servers[])

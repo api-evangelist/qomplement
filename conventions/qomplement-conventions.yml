@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qomplement.com/api/overview
+docs: https://docs.qomplement.com
+authentication:
+  style: api-key-bearer
+  detail: Authorization Bearer with an sd_-prefixed key.
+  ref: authentication/qomplement-authentication.yml
+base_url: https://developer-api.qomplement.com/v1
+async_model:
+  style: job-based
+  detail: >-
+    Extract and fill operations return a job; poll GET /v1/jobs/{job_id} for status
+    (completed|failed) or subscribe to webhooks. Download results via
+    GET /v1/jobs/{job_id}/download.
+  ref: asyncapi/qomplement-webhooks.yml
+pagination:
+  style: not-documented
+  detail: >-
+    GET /v1/jobs returns a JobListResponse with jobs[], total, and has_more; the
+    OpenAPI does not document explicit limit/offset/cursor parameters.
+idempotency:
+  supported: false
+  detail: No idempotency key header or parameter is documented in the API.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: All endpoints are prefixed with /v1.
+  ref: lifecycle/qomplement-lifecycle.yml
+error_envelope:
+  shape: '{"error": ..., "detail": ..., "code": ...}'
+  ref: errors/qomplement-problem-types.yml
+rate_limiting:
+  detail: 60 req/min and 10,000 req/month per key; 429 + Retry-After on exceed.
+  ref: rate-limits/qomplement-rate-limits.yml
+request_tracing:
+  detail: No request-id tracing header is documented.

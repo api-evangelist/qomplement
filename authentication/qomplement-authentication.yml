@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/qomplement-openapi-original.json
+docs: https://docs.qomplement.com/api/authentication
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  scheme: bearer
+  oauth2_flows: []
+  note: >-
+    The published OpenAPI declares no securitySchemes; authentication is documented
+    only in the developer docs. All API requests require an API key passed as a
+    Bearer token in the Authorization header.
+schemes:
+- name: bearerApiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  format: "Bearer <api_key>"
+  key_prefix: sd_
+  key_format: sd_ followed by 48 hexadecimal characters
+  issued_from: https://developers.qomplement.com
+  sources: [https://docs.qomplement.com/api/authentication]
+unauthorized:
+  statuses: [401, 403]
+  message: Could not validate credentials
+notes:
+  - No sandbox / separate test vs live key prefix is documented.
+  - Keys are shown only once at creation and carry per-minute and monthly limits.

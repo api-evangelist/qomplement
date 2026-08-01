@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qomplement.com/api/webhooks
+type: Webhooks
+transport: http-post
+security:
+  signature: none-documented
+  guidance: Validate that job_id matches a job you initiated; deliver over HTTPS.
+events:
+- name: extract
+  trigger: Document data extraction job completed or failed.
+- name: fill_pdf
+  trigger: PDF form filling job completed or failed.
+- name: fill_excel
+  trigger: Excel template filling job completed or failed.
+payload:
+  shape: |
+    {
+      "job_id": "UUID",
+      "data": {
+        "id": "UUID",
+        "type": "extract|fill_pdf|fill_excel",
+        "status": "completed|failed",
+        "result": { },
+        "error": { }
+      }
+    }
+note: >-
+  Webhooks are job-completion callbacks; the provider publishes no AsyncAPI document,
+  so this captures the documented webhook catalog as a Webhooks surface.

@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/qomplement-openapi-original.json
+note: >-
+  No official hosted/remote MCP server was found for Qomplement. This is a candidate
+  tool list derived one-to-one from the published OpenAPI operations.
+server:
+  name: qomplement
+  transport: http
+tools:
+- name: extract_document
+  description: Extract structured data from uploaded documents (30+ formats).
+  source_operation: openapi/qomplement-openapi-original.json#extract_document_v1_extract_post
+- name: fill_pdf
+  description: Auto-fill PDF forms from source documents or field mappings.
+  source_operation: openapi/qomplement-openapi-original.json#fill_pdf_v1_fill_pdf_post
+- name: fill_excel
+  description: Populate Excel templates with extracted data.
+  source_operation: openapi/qomplement-openapi-original.json#fill_excel_v1_fill_excel_post
+- name: get_job
+  description: Check async job status and results.
+  source_operation: openapi/qomplement-openapi-original.json#get_job_v1_jobs__job_id__get
+- name: list_jobs
+  description: List submitted jobs.
+  source_operation: openapi/qomplement-openapi-original.json#list_jobs_v1_jobs_get
+- name: download_job_result
+  description: Download the result file of a completed job.
+  source_operation: openapi/qomplement-openapi-original.json#download_job_result_v1_jobs__job_id__download_get
+- name: list_models
+  description: Retrieve available AI models with capabilities and pricing.
+  source_operation: openapi/qomplement-openapi-original.json#list_models_v1_models_get
+- name: list_formats
+  description: View supported file types (30+ formats).
+  source_operation: openapi/qomplement-openapi-original.json#list_formats_v1_formats_get
+- name: get_usage
+  description: Access API usage metrics and billing data.
+  source_operation: openapi/qomplement-openapi-original.json#get_usage_v1_usage_get

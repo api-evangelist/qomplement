@@ -1,0 +1,26 @@
+{
+  "provider": "qomplement",
+  "sources": [
+    "qomplement-api-keys-api-openapi.yml",
+    "qomplement-extract-api-openapi.yml",
+    "qomplement-fill-excel-api-openapi.yml",
+    "qomplement-fill-pdf-api-openapi.yml",
+    "qomplement-health-api-openapi.yml",
+    "qomplement-jobs-api-openapi.yml",
+    "qomplement-usage-api-openapi.yml"
+  ],
+  "outputs": [
+    "qomplement-api-keys-api-openapi.yml",
+    "qomplement-extract-api-openapi.yml",
+    "qomplement-fill-excel-api-openapi.yml",
+    "qomplement-fill-pdf-api-openapi.yml",
+    "qomplement-health-api-openapi.yml",
+    "qomplement-jobs-api-openapi.yml",
+    "qomplement-usage-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

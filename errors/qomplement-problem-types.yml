@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/qomplement-openapi-original.json
+docs: https://docs.qomplement.com/api/errors
+format: custom-json
+envelope:
+  shape: '{"error": "human-readable message", "detail": "additional context", "code": "error_code"}'
+  note: >-
+    Not RFC 9457 problem+json. Fields are optional per response; authentication errors
+    typically omit "code" and include only "detail". The OpenAPI declares HTTP 422
+    (Unprocessable Entity) with an application/json HTTPValidationError schema on the
+    write and job operations.
+statuses:
+- status: 400
+  meaning: Bad Request (invalid parameters, missing required fields)
+- status: 401
+  meaning: Unauthorized (missing or invalid API key)
+- status: 403
+  meaning: Forbidden (key revoked, expired, or insufficient permissions)
+- status: 404
+  meaning: Not Found (job or resource does not exist)
+- status: 422
+  meaning: Unprocessable Entity (validation error / processing failed)
+  schema: HTTPValidationError
+  source_operations:
+  - openapi/qomplement-openapi-original.json#extract_document_v1_extract_post
+  - openapi/qomplement-openapi-original.json#fill_pdf_v1_fill_pdf_post
+  - openapi/qomplement-openapi-original.json#fill_excel_v1_fill_excel_post
+  - openapi/qomplement-openapi-original.json#get_job_v1_jobs__job_id__get
+- status: 429
+  meaning: Too Many Requests (rate limit exceeded)
+- status: 500
+  meaning: Internal Server Error (unexpected server error)
+error_codes:
+- code: no_form_fields
+  meaning: No fillable form fields detected in PDF
+- code: processing_error
+  meaning: OCR or text extraction failed
