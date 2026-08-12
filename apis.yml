@@ -211,7 +211,7 @@ common:
 - type: Authentication
   url: authentication/qomplement-authentication.yml
 - type: OpenAPI
-  url: openapi/qomplement-openapi-original.json
+  url: openapi/_original/qomplement-openapi-original.json
 - type: Packages
   url: packages/qomplement-packages.yml
 - type: SDKs
