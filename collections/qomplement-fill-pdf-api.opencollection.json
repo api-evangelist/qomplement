@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StructDatafy API Keys Fill PDF API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fill PDF",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fill Pdf",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/fill/pdf",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Fill a PDF form using source documents, natural language instructions, or explicit mappings.\n\nThree ways to fill:\n1. **Source documents** — upload source doc(s), AI extracts and maps data to form fields\n2. **Instructions** — describe what to fill in plain language\n3. **Explicit mappings** — provide JSON {field_name: value} pairs\n\nAt least one of source_files, instructions, or field_mappings must be provided."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

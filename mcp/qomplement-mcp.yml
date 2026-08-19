@@ -2,9 +2,8 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/qomplement-openapi-original.json
-note: >-
-  No official hosted/remote MCP server was found for Qomplement. This is a candidate
-  tool list derived one-to-one from the published OpenAPI operations.
+note: No official hosted/remote MCP server was found for Qomplement. This is a candidate tool list derived
+  one-to-one from the published OpenAPI operations.
 server:
   name: qomplement
   transport: http
@@ -36,3 +35,9 @@ tools:
 - name: get_usage
   description: Access API usage metrics and billing data.
   source_operation: openapi/qomplement-openapi-original.json#get_usage_v1_usage_get
+deployment:
+  mode: none
+  verified: derived
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census

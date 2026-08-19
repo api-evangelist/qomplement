@@ -1,0 +1,303 @@
+{
+  "item": [
+    {
+      "id": "c69df80c-0a1c-401b-953d-79c54cae0752",
+      "name": "Fill Excel",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "969c7731-e35c-4f73-bcf4-a26b33964685",
+          "name": "Fill Excel",
+          "request": {
+            "name": "Fill Excel",
+            "description": {
+              "content": "Fill an Excel template using source documents, natural language instructions, or both.\n\nTwo ways to fill:\n1. **Source documents** — upload source doc(s), AI extracts and maps data\n2. **Instructions** — describe what to fill in plain language\n\nBoth can be combined. At least one must be provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fill",
+                "excel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "target_excel",
+                  "type": "file",
+                  "description": "(Required) Target Excel template to fill"
+                },
+                {
+                  "key": "source_files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "Source document(s) to extract data from"
+                },
+                {
+                  "key": "model",
+                  "value": "qomplement-OCR-v1",
+                  "type": "text",
+                  "description": "OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1"
+                },
+                {
+                  "key": "instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Natural language instructions for filling"
+                },
+                {
+                  "key": "fill_mode",
+                  "value": "smart",
+                  "type": "text",
+                  "description": "Fill mode: smart, complete, or replace"
+                },
+                {
+                  "key": "webhook_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6989e90d-80e1-49a6-b8e7-24cb322c3cd9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fill",
+                    "excel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Target Excel template to fill",
+                        "type": "text/plain"
+                      },
+                      "key": "target_excel",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source document(s) to extract data from",
+                        "type": "text/plain"
+                      },
+                      "key": "source_files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "qomplement-OCR-v1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Natural language instructions for filling",
+                        "type": "text/plain"
+                      },
+                      "key": "instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Fill mode: smart, complete, or replace",
+                        "type": "text/plain"
+                      },
+                      "key": "fill_mode",
+                      "value": "smart",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42bfc108-6b11-4678-9f7c-98fa03b1ce91",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fill",
+                    "excel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Target Excel template to fill",
+                        "type": "text/plain"
+                      },
+                      "key": "target_excel",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source document(s) to extract data from",
+                        "type": "text/plain"
+                      },
+                      "key": "source_files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "qomplement-OCR-v1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Natural language instructions for filling",
+                        "type": "text/plain"
+                      },
+                      "key": "instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Fill mode: smart, complete, or replace",
+                        "type": "text/plain"
+                      },
+                      "key": "fill_mode",
+                      "value": "smart",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7bd93c5f-e1e7-401f-affa-027b2016775c",
+    "name": "StructDatafy API Keys Fill Excel API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Document extraction, PDF filling, and Excel filling API",
+      "type": "text/plain"
+    }
+  }
+}

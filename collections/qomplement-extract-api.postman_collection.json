@@ -1,0 +1,493 @@
+{
+  "item": [
+    {
+      "id": "31e14eb4-d817-4f46-a594-fcd194d9713f",
+      "name": "Extract",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f81fd22-2679-4563-b9be-70d208ae8851",
+          "name": "Extract Document",
+          "request": {
+            "name": "Extract Document",
+            "description": {
+              "content": "Extract structured data from document(s).\n\nReturns a clean `fields` dict with extracted key-value data, plus any `tables` found.\nAdd `detail=true` for the full AI output (entities, summary, primary/secondary entities).\nAdd `chunk_size` to get overlapping text chunks from the raw OCR.\n\n- Single file <=5 pages: synchronous (200)\n- Multiple files or >5 pages: async job (202), poll via /v1/jobs/{id}",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "extract"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "(Required) Document file(s) to extract"
+                },
+                {
+                  "key": "model",
+                  "value": "qomplement-OCR-v1",
+                  "type": "text",
+                  "description": "OCR model: qomplement-OCR-v1 (standard) or qomplement-OCR-XL-v1 (high precision)"
+                },
+                {
+                  "key": "schema",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "JSON schema of target fields"
+                },
+                {
+                  "key": "output_format",
+                  "value": "json",
+                  "type": "text",
+                  "description": "Output format: json, csv, xml"
+                },
+                {
+                  "key": "detail",
+                  "value": "false",
+                  "type": "text",
+                  "description": "Include full AI extraction detail (entities, summary, primary/secondary entities)"
+                },
+                {
+                  "key": "chunk_size",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Split OCR text into chunks of this many characters"
+                },
+                {
+                  "key": "chunk_overlap",
+                  "value": "0",
+                  "type": "text",
+                  "description": "Number of overlapping characters between chunks"
+                },
+                {
+                  "key": "webhook_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Webhook URL for async results"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bf9a3e0-13b7-42b4-bf75-484d674b52d3",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Document file(s) to extract",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "OCR model: qomplement-OCR-v1 (standard) or qomplement-OCR-XL-v1 (high precision)",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "qomplement-OCR-v1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON schema of target fields",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: json, csv, xml",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Include full AI extraction detail (entities, summary, primary/secondary entities)",
+                        "type": "text/plain"
+                      },
+                      "key": "detail",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Split OCR text into chunks of this many characters",
+                        "type": "text/plain"
+                      },
+                      "key": "chunk_size",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Number of overlapping characters between chunks",
+                        "type": "text/plain"
+                      },
+                      "key": "chunk_overlap",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Webhook URL for async results",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a9ddc66-6c9f-422c-94af-1d5891279cef",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Document file(s) to extract",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "OCR model: qomplement-OCR-v1 (standard) or qomplement-OCR-XL-v1 (high precision)",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "qomplement-OCR-v1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON schema of target fields",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: json, csv, xml",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Include full AI extraction detail (entities, summary, primary/secondary entities)",
+                        "type": "text/plain"
+                      },
+                      "key": "detail",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Split OCR text into chunks of this many characters",
+                        "type": "text/plain"
+                      },
+                      "key": "chunk_size",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Number of overlapping characters between chunks",
+                        "type": "text/plain"
+                      },
+                      "key": "chunk_overlap",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Webhook URL for async results",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1c762ce-8a29-41fa-b7c5-d6a4c36b2a76",
+          "name": "List Models",
+          "request": {
+            "name": "List Models",
+            "description": {
+              "content": "List all available models.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b48b807a-4970-4220-ad66-fddbf74a7105",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1dd651f7-3bb5-4d02-a76f-e792c0bb8649",
+          "name": "List Formats",
+          "request": {
+            "name": "List Formats",
+            "description": {
+              "content": "List all supported file formats grouped by category.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "formats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fab4497c-da44-4f15-a76e-a960143168d1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "formats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9feaea7b-c6bd-4ea2-ba2c-4a4fa189c889",
+    "name": "StructDatafy API Keys Extract API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Document extraction, PDF filling, and Excel filling API",
+      "type": "text/plain"
+    }
+  }
+}

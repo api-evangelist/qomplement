@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StructDatafy API Keys Fill Excel API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fill Excel",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fill Excel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/fill/excel",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Fill an Excel template using source documents, natural language instructions, or both.\n\nTwo ways to fill:\n1. **Source documents** — upload source doc(s), AI extracts and maps data\n2. **Instructions** — describe what to fill in plain language\n\nBoth can be combined. At least one must be provided."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

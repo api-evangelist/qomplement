@@ -1,0 +1,327 @@
+{
+  "item": [
+    {
+      "id": "c7dc1397-842f-4e1d-ab91-9308f0503139",
+      "name": "Fill PDF",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04924684-9a45-4aee-b510-6b48340bafae",
+          "name": "Fill Pdf",
+          "request": {
+            "name": "Fill Pdf",
+            "description": {
+              "content": "Fill a PDF form using source documents, natural language instructions, or explicit mappings.\n\nThree ways to fill:\n1. **Source documents** — upload source doc(s), AI extracts and maps data to form fields\n2. **Instructions** — describe what to fill in plain language\n3. **Explicit mappings** — provide JSON {field_name: value} pairs\n\nAt least one of source_files, instructions, or field_mappings must be provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fill",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "target_pdf",
+                  "type": "file",
+                  "description": "(Required) Target PDF form to fill"
+                },
+                {
+                  "key": "source_files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "Source document(s) to extract data from"
+                },
+                {
+                  "key": "model",
+                  "value": "qomplement-OCR-v1",
+                  "type": "text",
+                  "description": "OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1"
+                },
+                {
+                  "key": "instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Natural language instructions for filling (e.g. \"Fill client name as 'Acme Corp'\")"
+                },
+                {
+                  "key": "field_mappings",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "JSON explicit mappings {field: value}"
+                },
+                {
+                  "key": "flatten",
+                  "value": "false",
+                  "type": "text",
+                  "description": "Flatten form after filling"
+                },
+                {
+                  "key": "webhook_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb61f483-e41c-49d3-b830-fea878ba01c9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fill",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Target PDF form to fill",
+                        "type": "text/plain"
+                      },
+                      "key": "target_pdf",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source document(s) to extract data from",
+                        "type": "text/plain"
+                      },
+                      "key": "source_files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "qomplement-OCR-v1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Natural language instructions for filling (e.g. \"Fill client name as 'Acme Corp'\")",
+                        "type": "text/plain"
+                      },
+                      "key": "instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON explicit mappings {field: value}",
+                        "type": "text/plain"
+                      },
+                      "key": "field_mappings",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Flatten form after filling",
+                        "type": "text/plain"
+                      },
+                      "key": "flatten",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b7199ed-525f-42c9-990d-d42a677987f7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fill",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Target PDF form to fill",
+                        "type": "text/plain"
+                      },
+                      "key": "target_pdf",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Source document(s) to extract data from",
+                        "type": "text/plain"
+                      },
+                      "key": "source_files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "OCR model: qomplement-OCR-v1 or qomplement-OCR-XL-v1",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "qomplement-OCR-v1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Natural language instructions for filling (e.g. \"Fill client name as 'Acme Corp'\")",
+                        "type": "text/plain"
+                      },
+                      "key": "instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON explicit mappings {field: value}",
+                        "type": "text/plain"
+                      },
+                      "key": "field_mappings",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Flatten form after filling",
+                        "type": "text/plain"
+                      },
+                      "key": "flatten",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "13a5c31e-2837-4435-8dfc-a5d326d03fe3",
+    "name": "StructDatafy API Keys Fill PDF API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Document extraction, PDF filling, and Excel filling API",
+      "type": "text/plain"
+    }
+  }
+}

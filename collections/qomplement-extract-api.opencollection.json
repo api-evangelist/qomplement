@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StructDatafy API Keys Extract API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Extract",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Extract Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/extract",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Extract structured data from document(s).\n\nReturns a clean `fields` dict with extracted key-value data, plus any `tables` found.\nAdd `detail=true` for the full AI output (entities, summary, primary/secondary entities).\nAdd `chunk_size` to get overlapping text chunks from the raw OCR.\n\n- Single file <=5 pages: synchronous (200)\n- Multiple files or >5 pages: async job (202), poll via /v1/jobs/{id}"
+        },
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/models"
+          },
+          "docs": "List all available models."
+        },
+        {
+          "info": {
+            "name": "List Formats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/formats"
+          },
+          "docs": "List all supported file formats grouped by category."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
