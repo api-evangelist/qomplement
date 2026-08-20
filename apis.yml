@@ -51,6 +51,8 @@ apis:
   humanURL: https://docs.qomplement.com
   baseURL: https://developer-api.qomplement.com/v1
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -161,6 +163,8 @@ apis:
   humanURL: https://docs.qomplement.com
   baseURL: https://developer-api.qomplement.com/v1
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
