@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: StructDatafy API Keys Jobs API
+  title: StructDatafy Jobs API
   description: Document extraction, PDF filling, and Excel filling API
   version: 1.0.0
 tags:
@@ -121,25 +121,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    JobListResponse:
-      properties:
-        jobs:
-          items:
-            $ref: '#/components/schemas/JobResponse'
-          type: array
-          title: Jobs
-        total:
-          type: integer
-          title: Total
-        has_more:
-          type: boolean
-          title: Has More
-      type: object
-      required:
-      - jobs
-      - total
-      - has_more
-      title: JobListResponse
     ValidationError:
       properties:
         loc:
@@ -161,6 +142,52 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    JobListResponse:
+      properties:
+        jobs:
+          items:
+            $ref: '#/components/schemas/JobResponse'
+          type: array
+          title: Jobs
+        total:
+          type: integer
+          title: Total
+        has_more:
+          type: boolean
+          title: Has More
+      type: object
+      required:
+      - jobs
+      - total
+      - has_more
+      title: JobListResponse
+    JobProgress:
+      properties:
+        current:
+          type: integer
+          title: Current
+        total:
+          type: integer
+          title: Total
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+      type: object
+      required:
+      - current
+      - total
+      title: JobProgress
     JobResponse:
       properties:
         id:
@@ -217,30 +244,3 @@ components:
       - status
       - created_at
       title: JobResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    JobProgress:
-      properties:
-        current:
-          type: integer
-          title: Current
-        total:
-          type: integer
-          title: Total
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-      type: object
-      required:
-      - current
-      - total
-      title: JobProgress

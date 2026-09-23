@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: StructDatafy API Keys Health API
+  title: StructDatafy Health API
   description: Document extraction, PDF filling, and Excel filling API
   version: 1.0.0
 tags:

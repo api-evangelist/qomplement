@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: StructDatafy API Keys Extract API
+  title: StructDatafy Extract API
   description: Document extraction, PDF filling, and Excel filling API
   version: 1.0.0
 tags:
@@ -21,9 +21,7 @@ paths:
         Add `chunk_size` to get overlapping text chunks from the raw OCR.
 
 
-        - Single file <=5 pages: synchronous (200)
-
-        - Multiple files or >5 pages: async job (202), poll via /v1/jobs/{id}'
+        - Single file 5 pages: async job (202), poll via /v1/jobs/{id}'
       operationId: extract_document_v1_extract_post
       requestBody:
         content:

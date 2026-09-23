@@ -1,13 +1,7 @@
 {
   "provider": "qomplement",
   "sources": [
-    "qomplement-api-keys-api-openapi.yml",
-    "qomplement-extract-api-openapi.yml",
-    "qomplement-fill-excel-api-openapi.yml",
-    "qomplement-fill-pdf-api-openapi.yml",
-    "qomplement-health-api-openapi.yml",
-    "qomplement-jobs-api-openapi.yml",
-    "qomplement-usage-api-openapi.yml"
+    "_original/qomplement-openapi-original.json"
   ],
   "outputs": [
     "qomplement-api-keys-api-openapi.yml",
@@ -21,6 +15,26 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "qomplement-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "qomplement-openapi-original.json: tagged paths GET /health -> Health",
+    "qomplement-openapi-original.json: declared missing tag: API Keys",
+    "qomplement-openapi-original.json: declared missing tag: Extract",
+    "qomplement-openapi-original.json: declared missing tag: Fill Excel",
+    "qomplement-openapi-original.json: declared missing tag: Fill PDF",
+    "qomplement-openapi-original.json: declared missing tag: Health",
+    "qomplement-openapi-original.json: declared missing tag: Jobs",
+    "qomplement-openapi-original.json: declared missing tag: Usage",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "qomplement-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qomplement-extract-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qomplement-fill-excel-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qomplement-fill-pdf-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qomplement-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qomplement-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qomplement-usage-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
