@@ -64,6 +64,15 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     Body_fill_excel_v1_fill_excel_post:
       properties:
         target_excel:
@@ -105,12 +114,3 @@ components:
       required:
       - target_excel
       title: Body_fill_excel_v1_fill_excel_post
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError

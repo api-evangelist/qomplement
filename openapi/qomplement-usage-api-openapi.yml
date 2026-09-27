@@ -38,6 +38,53 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DailyUsage:
+      properties:
+        date:
+          type: string
+          title: Date
+        requests:
+          type: integer
+          title: Requests
+        pages:
+          type: integer
+          title: Pages
+      type: object
+      required:
+      - date
+      - requests
+      - pages
+      title: DailyUsage
     UsageResponse:
       properties:
         period:
@@ -77,50 +124,3 @@ components:
       - excels_filled
       - daily_breakdown
       title: UsageResponse
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    DailyUsage:
-      properties:
-        date:
-          type: string
-          title: Date
-        requests:
-          type: integer
-          title: Requests
-        pages:
-          type: integer
-          title: Pages
-      type: object
-      required:
-      - date
-      - requests
-      - pages
-      title: DailyUsage
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError

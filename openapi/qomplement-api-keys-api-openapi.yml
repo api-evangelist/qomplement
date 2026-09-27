@@ -76,27 +76,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -106,6 +85,32 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    APIKeyCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: Friendly name for the key
+        owner_email:
+          type: string
+          title: Owner Email
+          description: Email of the key owner
+        rate_limit_per_minute:
+          type: integer
+          maximum: 1000.0
+          minimum: 1.0
+          title: Rate Limit Per Minute
+          default: 60
+        monthly_request_limit:
+          type: integer
+          minimum: 1.0
+          title: Monthly Request Limit
+          default: 10000
+      type: object
+      required:
+      - name
+      - owner_email
+      title: APIKeyCreate
     APIKeyResponse:
       properties:
         id:
@@ -154,32 +159,27 @@ components:
       - created_at
       - last_used_at
       title: APIKeyResponse
-    APIKeyCreate:
+    ValidationError:
       properties:
-        name:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Name
-          description: Friendly name for the key
-        owner_email:
+          title: Message
+        type:
           type: string
-          title: Owner Email
-          description: Email of the key owner
-        rate_limit_per_minute:
-          type: integer
-          maximum: 1000.0
-          minimum: 1.0
-          title: Rate Limit Per Minute
-          default: 60
-        monthly_request_limit:
-          type: integer
-          minimum: 1.0
-          title: Monthly Request Limit
-          default: 10000
+          title: Error Type
       type: object
       required:
-      - name
-      - owner_email
-      title: APIKeyCreate
+      - loc
+      - msg
+      - type
+      title: ValidationError
     APIKeyCreated:
       properties:
         id:
