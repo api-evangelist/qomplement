@@ -38,6 +38,23 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    DailyUsage:
+      properties:
+        date:
+          type: string
+          title: Date
+        requests:
+          type: integer
+          title: Requests
+        pages:
+          type: integer
+          title: Pages
+      type: object
+      required:
+      - date
+      - requests
+      - pages
+      title: DailyUsage
     ValidationError:
       properties:
         loc:
@@ -59,32 +76,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    DailyUsage:
-      properties:
-        date:
-          type: string
-          title: Date
-        requests:
-          type: integer
-          title: Requests
-        pages:
-          type: integer
-          title: Pages
-      type: object
-      required:
-      - date
-      - requests
-      - pages
-      title: DailyUsage
     UsageResponse:
       properties:
         period:
@@ -124,3 +115,12 @@ components:
       - excels_filled
       - daily_breakdown
       title: UsageResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
