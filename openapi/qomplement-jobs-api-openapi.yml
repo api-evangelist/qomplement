@@ -121,6 +121,33 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    JobProgress:
+      properties:
+        current:
+          type: integer
+          title: Current
+        total:
+          type: integer
+          title: Total
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+      type: object
+      required:
+      - current
+      - total
+      title: JobProgress
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     JobListResponse:
       properties:
         jobs:
@@ -140,15 +167,6 @@ components:
       - total
       - has_more
       title: JobListResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -226,21 +244,3 @@ components:
       - status
       - created_at
       title: JobResponse
-    JobProgress:
-      properties:
-        current:
-          type: integer
-          title: Current
-        total:
-          type: integer
-          title: Total
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-      type: object
-      required:
-      - current
-      - total
-      title: JobProgress
