@@ -1,0 +1,12 @@
+{
+ "url": "https://developer-api.qomplement.com/openapi.json",
+ "requested_url": "https://developer-api.qomplement.com/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 16569,
+ "sha256": "5ff911d0987772e569666a032d6252116ca8dd8d3b972acb031f4b0f660b249f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
