@@ -76,15 +76,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -106,6 +97,32 @@ components:
       - msg
       - type
       title: ValidationError
+    APIKeyCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: Friendly name for the key
+        owner_email:
+          type: string
+          title: Owner Email
+          description: Email of the key owner
+        rate_limit_per_minute:
+          type: integer
+          maximum: 1000.0
+          minimum: 1.0
+          title: Rate Limit Per Minute
+          default: 60
+        monthly_request_limit:
+          type: integer
+          minimum: 1.0
+          title: Monthly Request Limit
+          default: 10000
+      type: object
+      required:
+      - name
+      - owner_email
+      title: APIKeyCreate
     APIKeyCreated:
       properties:
         id:
@@ -207,29 +224,12 @@ components:
       - created_at
       - last_used_at
       title: APIKeyResponse
-    APIKeyCreate:
+    HTTPValidationError:
       properties:
-        name:
-          type: string
-          title: Name
-          description: Friendly name for the key
-        owner_email:
-          type: string
-          title: Owner Email
-          description: Email of the key owner
-        rate_limit_per_minute:
-          type: integer
-          maximum: 1000.0
-          minimum: 1.0
-          title: Rate Limit Per Minute
-          default: 60
-        monthly_request_limit:
-          type: integer
-          minimum: 1.0
-          title: Monthly Request Limit
-          default: 10000
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - name
-      - owner_email
-      title: APIKeyCreate
+      title: HTTPValidationError
