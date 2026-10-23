@@ -30,3 +30,9 @@ paths:
               schema: {}
       tags:
       - Health
+x-provenance:
+  method: harvested
+  publisher: Qomplement
+  source: https://developer-api.qomplement.com/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
